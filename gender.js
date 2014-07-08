@@ -41,12 +41,12 @@ function parseFile(file) {
 
   var filePath = path.join(path.dirname(fs.realpathSync(__filename)), file);
   var array = fs.readFileSync(filePath).toString().split('\n');
-  for(i in array) {
-    var parts = array[i].split(/\s+/);
+  array.forEach(function(a) {
+    var parts = a.split(/\s+/);
     var name = parts[0];
     var frequency = parts[1];
     frequencies[name.toLowerCase()] = parseFloat(frequency);
-  }
+  })
   parseFile.cache[file] = frequencies;
   return frequencies;
 }
