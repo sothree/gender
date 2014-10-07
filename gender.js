@@ -56,8 +56,8 @@ parseFile.cache = {};
 function getFirstNameFromFullName(fullName) {
   var commaIndex = fullName.indexOf(',');
   if (commaIndex >= 0) {
-    var s = fullName.split(/,(.+)/);
-    fullName = (s.length > 0 ? s[1] : s[0]).trim();
+    var s = fullName.split(/,(.+)/)[1];
+    fullName = s ? s.trim() : fullName;
   }
   return fullName.split(/\s/)[0];
 }
